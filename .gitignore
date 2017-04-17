@@ -27,3 +27,11 @@
 *.exe
 *.out
 *.app
+
+build/
+
+# IDE files
+.idea/
+*.swp
+
+cmake-build-debug/
