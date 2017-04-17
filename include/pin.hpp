@@ -1,18 +1,21 @@
 #ifndef __KPVS_PIN_HPP_
 #define __KPVS_PIN_HPP_
+#include "common.hpp"
 
 namespace kpvs
 {
-    template <Width W>
-    class Port
+    class Pin
     {
     public:
-        Port(State s);
-        Port();
-        int getState(int n);
-        int setState(int n);
-    private:
-        std::array<Pin, W> pins;
-    }
+        enum PinMode  
+        {
+            PINMODE_IN  = 0,
+            PINMODE_OUT = 1,
+        };
+
+        Pin();
+        PinMode      mode;
+        VoltageState state;
+    };
 }
 #endif

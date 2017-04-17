@@ -10,11 +10,13 @@ namespace kpvs
     {
     public:
         Wire();
-        int appendPin(Pin& pin);
-        int deletePin(Pin& pin);
-        int transmit();
+        int          connectPin(Pin* pin); // TODO: replace with references
+        int          disconnectPin(Pin* pin);
+        int          update();
+        VoltageState getState() const;
     private:
-        std::vector<Pin&> pins;
-    }
+        std::vector<Pin*> pins;
+        VoltageState state;
+    };
 }
 #endif
