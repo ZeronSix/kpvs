@@ -1,25 +1,22 @@
 #include "wire.hpp"
 #include <algorithm>
-#include <iostream>
 
-namespace kpvs 
+namespace kpvs
 {
     Wire::Wire():
         state(VSTATE_LOW)
     {
     }
 
-    int Wire::connectPin(Pin* pin)
+    int Wire::connectPin(Pin& pin)
     {
-        std::cout << "POOTIS1!" << std::endl;
-        pins.push_back(pin);
-        std::cout << "POOTIS!" << std::endl;
+        pins.push_back(&pin);
         return ERR_OK;
     }
 
-    int Wire::disconnectPin(Pin* pin)
+    int Wire::disconnectPin(Pin& pin)
     {
-        auto it = std::find(pins.begin(), pins.end() + pins.capacity(), pin); 
+        auto it = std::find(pins.begin(), pins.end() + pins.capacity(), &pin);
         pins.erase(it);
         return ERR_OK;
     }
@@ -29,6 +26,7 @@ namespace kpvs
         bool metLow = false;
         bool metHigh = false;
 
+        // TODO: needs rethinking
         for (auto pin : pins)
         {
             if (pin->mode == Pin::PINMODE_OUT)
@@ -43,6 +41,10 @@ namespace kpvs
                     metHigh = true;
                     state   = VSTATE_HIGH;
                 }
+                else if (pin->state == VSTATE_X)
+                {
+                    state = VSTATE_X; //TODO: WTF?
+                }
             }
         }
         if (metHigh && metLow)
@@ -56,7 +58,7 @@ namespace kpvs
 
         return ERR_OK;
     }
-    
+
     VoltageState Wire::getState() const
     {
         return state;

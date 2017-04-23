@@ -7,10 +7,11 @@ namespace kpvs
     class Pin
     {
     public:
-        enum PinMode  
+        enum PinMode
         {
-            PINMODE_IN  = 0,
-            PINMODE_OUT = 1,
+            PINMODE_IN,
+            PINMODE_OUT,
+            PINMODE_HI_Z
         };
 
         Pin();

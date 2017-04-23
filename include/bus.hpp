@@ -11,25 +11,25 @@ namespace kpvs
     class Bus
     {
     public:
-        int   connectPin(int n, Pin* p);
-        int   disconnectPin(int n, Pin* p);
+        int   connectPin(int n, Pin& p);
+        int   disconnectPin(int n, Pin& p);
         Width getWidth();
-        int   transmit();
+        int   update();
     private:
         std::array<Wire, W> wires;
     };
 
     template <Width W>
-    int Bus<W>::connectPin(int n, Pin* p)
+    int Bus<W>::connectPin(int n, Pin& p)
     {
-        wires[n].connectPin(p);
+        wires.at(n).connectPin(p);
         return ERR_OK;
     }
-    
+
     template <Width W>
-    int Bus<W>::disconnectPin(int n, Pin* p)
+    int Bus<W>::disconnectPin(int n, Pin& p)
     {
-        wires[n].disconnectPin(p);
+        wires.at(n).disconnectPin(p);
         return ERR_OK;
     }
 
@@ -40,8 +40,8 @@ namespace kpvs
     }
 
     template <Width W>
-    int Bus<W>::transmit()
-    {   
+    int Bus<W>::update()
+    {
         for (auto& w : wires)
             w.update();
         return ERR_OK;

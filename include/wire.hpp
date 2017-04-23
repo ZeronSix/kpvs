@@ -6,12 +6,12 @@
 
 namespace kpvs
 {
-    class Wire 
+    class Wire
     {
     public:
         Wire();
-        int          connectPin(Pin* pin); // TODO: replace with references
-        int          disconnectPin(Pin* pin);
+        int          connectPin(Pin& pin);
+        int          disconnectPin(Pin& pin);
         int          update();
         VoltageState getState() const;
     private:

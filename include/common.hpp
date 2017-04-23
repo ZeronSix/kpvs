@@ -2,14 +2,16 @@
 #define __KPVS_COMMON_HPP_
 #include <cstddef>
 
-namespace kpvs 
+namespace kpvs
 {
     typedef std::size_t Width;
 
     enum VoltageState
     {
-        VSTATE_LOW          = 0,
-        VSTATE_HIGH         = 1
+        VSTATE_LOW  = 0,
+        VSTATE_HIGH = 1,
+        VSTATE_HI_Z = 2,
+        VSTATE_X    = 3
     };
 
     enum ErrorCode
