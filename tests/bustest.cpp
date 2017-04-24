@@ -10,7 +10,7 @@ int main()
     bus.connectPin(0, port1.getPin(0));
     bus.connectPin(0, port2.getPin(0));
 
-    bus.transmit();
+    bus.update();
 
     return 0;
 }
