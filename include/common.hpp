@@ -20,8 +20,11 @@ namespace kpvs
         ERR_UNKNOWN         = 1,
         ERR_WRONG_VSTATE    = 2,
         ERR_WRONG_MASK_SIZE = 3,
-        ERR_SHORT_CIRCUIT   = 4
+        ERR_SHORT_CIRCUIT   = 4,
+        ERR_WRONG_TERM_CMD  = 5
     };
+
+    const std::size_t DEFAULT_FREQUENCY = 9600000;
 }
 
 #endif
