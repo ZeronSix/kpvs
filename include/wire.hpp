@@ -6,15 +6,17 @@
 
 namespace kpvs
 {
-    class Wire 
+    class Wire
     {
     public:
         Wire();
-        int appendPin(Pin& pin);
-        int deletePin(Pin& pin);
-        int transmit();
+        int          connectPin(Pin& pin);
+        int          disconnectPin(Pin& pin);
+        int          update();
+        VoltageState getState() const;
     private:
-        std::vector<Pin&> pins;
-    }
+        std::vector<Pin*> pins;
+        VoltageState state;
+    };
 }
 #endif
