@@ -27,6 +27,8 @@ namespace kpvs
     {
         while (true)
         {
+            std::cout << PROMPT;
+
             std::string line;
             std::string command;
             std::getline(std::cin, line);

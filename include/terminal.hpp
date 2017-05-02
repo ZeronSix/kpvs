@@ -11,7 +11,8 @@ namespace kpvs
         std::size_t totalTicks;
         std::size_t frequency;
     public:
-        Terminal(size_t freq = DEFAULT_FREQUENCY);
+        const std::string PROMPT = ">>";
+        Terminal(std::size_t freq = DEFAULT_FREQUENCY);
         int run();
         int tick();
         int info(const std::string& arg) const;
