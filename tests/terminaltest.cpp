@@ -1,8 +1,9 @@
 #include "terminal.hpp"
 
-int main()
+int main(int argc, char* argv[])
 {
-    kpvs::Terminal term;
+    kpvs::TerminalOptHandler termOpt(argc, argv);
+    kpvs::Terminal term(termOpt.frequency);
     term.run();
 
     return 0;

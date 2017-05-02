@@ -6,32 +6,10 @@
 
 namespace kpvs
 {
-    TerminalOptHandler::TerminalOptHandler(int argc, char* argv[]): frequency(DEFAULT_FREQUENCY)
+    TerminalOptHandler:TerminalOptHandler(): frequency(DEFAULT_FREQUENCY)
     {
         int res = 0;
-        while ((res = getopt(argc, argv, "f:")) != -1)
-        {
-            switch (res)
-            {
-            case 'f':
-                try
-                {
-                    frequency = std::stoul(optarg);
-                }
-                catch (const std::invalid_argument& err)
-                {
-                    std::cerr << "Wrong frequency: " << optarg << std::endl;
-                    frequency = DEFAULT_FREQUENCY;
-                }
-                break;
-            case '?':
-                // TODO: throw an exception in case of getopt error?
-                std::cerr << "Error while reading options!" << std::endl;
-                break;
-            default:
-                break;
-            }
-        }
+        while ((res = getopt(
     }
 
     Terminal::Terminal(std::size_t freq): isRunning(false),

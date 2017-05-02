@@ -5,13 +5,20 @@
 
 namespace kpvs
 {
+    class TerminalOptHandler
+    {
+    public:
+        std::size_t frequency;
+        TerminalOptHandler(int argc, char* argv[]);
+    };
+
     class Terminal
     {
         bool isRunning;
         std::size_t totalTicks;
         std::size_t frequency;
     public:
-        const std::string PROMPT = ">>";
+        const std::string PROMPT = ">> ";
         Terminal(std::size_t freq = DEFAULT_FREQUENCY);
         int run();
         int tick();
